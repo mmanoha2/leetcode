@@ -1,20 +1,11 @@
 function twoSum(nums: number[], target: number): number[] {
-    let searching = true;
-    let numbers: number[] = [];
-    let counter = 0;
-    while (searching) {
-        let number = target - nums[0];
-        nums.splice(0, 1);
-        let index = nums.indexOf(number);
-        if (index >= 0) {
-            numbers = [counter, index + counter + 1];
-            searching = false;
-        } else {
-            counter++;
-        }
+    for (let i = 0; i < nums.length; i++) {
+        const num = target - nums[i];
+        const index = nums.indexOf(num, i + 1);
+        if (index !== -1) return [i, index];
     }
-    return numbers;
-};
+    return [];
+}
 
 
 console.log(twoSum([2, 7, 11, 15], 9));
